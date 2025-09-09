@@ -2,6 +2,7 @@
 {
     public class Program
     {
+        private string palabraSecreta = "ejemplo";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
@@ -9,7 +10,11 @@
 
         public bool TirarLetraYAcertar(string letra)
         {
-           return true;
+           if (palabraSecreta.Contains(letra))
+            {
+                                return true;
+            }
+                 else return false;
         }
     }
 
