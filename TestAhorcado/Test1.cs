@@ -16,7 +16,7 @@ namespace Ahorcado
             Assert.IsTrue(resultado);
         }
 
-        
+  
         
     }
 }
