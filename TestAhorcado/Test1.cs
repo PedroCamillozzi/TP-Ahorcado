@@ -42,7 +42,7 @@ namespace Ahorcado
         public void IngresaPalabraYAciertaFalse()
         {
             var juego = new TPAhorcado.Program();
-            string palabra = "ejemplo";
+            string palabra = "otra";
 
             bool resultado = juego.TirarPalabraYAcertar(palabra);
 
