@@ -50,29 +50,29 @@ namespace Ahorcado
         }
 
         [TestMethod]
-        public void TestValidarLetraTrue()
+        public void TestValidarLetraRepetidaTrue()
         {
             var juego = new TPAhorcado.Program();
             juego.palabraEnJuego = "eje";
             string letra = "e";
 
-            bool resultado = juego.ValidarLetra(letra);
+            bool resultado = juego.ValidarLetraRepetida(letra);
 
             Assert.IsTrue(resultado);
         }
 
         [TestMethod]
-        public void TestValidarLetraFalse()
+        public void TestValidarLetraRepetidaFalse()
         {
             var juego = new TPAhorcado.Program();
             juego.palabraEnJuego = "eje";
             string letra = "o";
 
-            bool resultado = juego.ValidarLetra(letra);
+            bool resultado = juego.ValidarLetraRepetida(letra);
 
             Assert.IsFalse(resultado);
         }
-
+        
 
     }
 }

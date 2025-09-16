@@ -27,7 +27,7 @@
             else return false;
         }
 
-        public bool ValidarLetra(string letra)
+        public bool ValidarLetraRepetida(string letra)
         {
            if (palabraEnJuego.Contains(letra))
             {
