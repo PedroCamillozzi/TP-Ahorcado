@@ -3,9 +3,10 @@
     public class Program
     {
         private string palabraSecreta = "ejemplo";
+        public string palabraEnJuego = "";
         static void Main(string[] args)
         {
-                
+           
         }
 
         public bool TirarLetraYAcertar(string letra)
@@ -25,6 +26,12 @@
             }
             else return false;
         }
+
+        public bool ValidarLetra(string letra)
+        {
+            return false;
+        }
+
     }
 
 }
