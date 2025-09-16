@@ -61,7 +61,17 @@ namespace Ahorcado
             Assert.IsTrue(resultado);
         }
 
+        [TestMethod]
+        public void TestValidarLetraFalse()
+        {
+            var juego = new TPAhorcado.Program();
+            juego.palabraEnJuego = "eje";
+            string letra = "j";
 
+            bool resultado = juego.ValidarLetra(letra);
+
+            Assert.IsFalse(resultado);
+        }
 
 
     }
