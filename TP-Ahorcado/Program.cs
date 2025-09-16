@@ -19,7 +19,11 @@
 
         public bool TirarPalabraYAcertar(string palabra)
         {
-            return true;
+            if (palabraSecreta == palabra)
+            {
+                return true;
+            }
+            else return false;
         }
     }
 
