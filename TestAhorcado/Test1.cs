@@ -54,7 +54,7 @@ namespace Ahorcado
         {
             var juego = new TPAhorcado.Program();
             juego.palabraEnJuego = "eje";
-            string letra = "o";
+            string letra = "e";
 
             bool resultado = juego.ValidarLetra(letra);
 

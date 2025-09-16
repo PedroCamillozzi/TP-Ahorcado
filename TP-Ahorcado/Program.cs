@@ -29,7 +29,7 @@
 
         public bool ValidarLetra(string letra)
         {
-            return false;
+            return true;
         }
 
     }
