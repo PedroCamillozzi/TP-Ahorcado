@@ -38,6 +38,17 @@ namespace Ahorcado
             Assert.IsTrue(resultado);
         }
 
+        [TestMethod]
+        public void IngresaPalabraYAciertaFalse()
+        {
+            var juego = new TPAhorcado.Program();
+            string palabra = "ejemplo";
+
+            bool resultado = juego.TirarPalabraYAcertar(palabra);
+
+            Assert.IsFalse(resultado);
+        }
+
 
 
 
