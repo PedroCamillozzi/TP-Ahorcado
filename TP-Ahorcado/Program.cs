@@ -29,7 +29,11 @@
 
         public bool ValidarLetra(string letra)
         {
-            return true;
+           if (palabraEnJuego.Contains(letra))
+            {
+                return true;
+            }
+            else return false;
         }
 
     }
