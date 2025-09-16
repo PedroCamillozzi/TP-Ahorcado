@@ -31,9 +31,9 @@ namespace Ahorcado
         public void IngresaPalabraYAciertaTrue()
         {
             var juego = new TPAhorcado.Program();
-            string palabra = "otra";
+            string palabra = "ejemplo";
 
-            bool resultado = juego.TirarLetraYAcertar(palabra);
+            bool resultado = juego.TirarPalabraYAcertar(palabra);
 
             Assert.IsTrue(resultado);
         }

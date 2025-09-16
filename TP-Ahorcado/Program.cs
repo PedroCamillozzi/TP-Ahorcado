@@ -5,7 +5,7 @@
         private string palabraSecreta = "ejemplo";
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+                
         }
 
         public bool TirarLetraYAcertar(string letra)
@@ -15,6 +15,11 @@
                                 return true;
             }
                  else return false;
+        }
+
+        public bool TirarPalabraYAcertar(string palabra)
+        {
+            return true;
         }
     }
 
