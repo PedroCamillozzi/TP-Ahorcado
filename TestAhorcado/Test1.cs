@@ -72,7 +72,33 @@ namespace Ahorcado
 
             Assert.IsFalse(resultado);
         }
-        
+
+
+        [TestMethod]
+        public void TestSumaCantidadIntentosTrue()
+        {
+            var juego = new TPAhorcado.Program();
+            juego.palabraEnJuego = "eje";
+            string letra = "o";
+
+            bool resultado = juego.SumaIntento(letra);
+
+            Assert.IsFalse(resultado);
+        }
+
+
+        [TestMethod]
+        public void TestSumaCantidadIntentosFalse()
+        {
+            var juego = new TPAhorcado.Program();
+            juego.palabraEnJuego = "eje";
+            string letra = "o";
+
+            bool resultado = juego.SumaIntento(letra);
+
+            Assert.IsFalse(resultado);
+        }
+
 
     }
 }
