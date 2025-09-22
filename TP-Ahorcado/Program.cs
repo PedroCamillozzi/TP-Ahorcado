@@ -40,7 +40,12 @@
 
         public bool SumaIntento(string letra)
         {
-            return true;
+            if (!palabraEnJuego.Contains(letra))
+            {
+                intentosEnJuego++;
+                return true;
+            }
+            else return false;
         }
 
     }
