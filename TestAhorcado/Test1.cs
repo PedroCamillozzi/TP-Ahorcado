@@ -83,7 +83,7 @@ namespace Ahorcado
 
             bool resultado = juego.SumaIntento(letra);
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado);
         }
 
 

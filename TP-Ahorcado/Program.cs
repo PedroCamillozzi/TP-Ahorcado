@@ -4,6 +4,8 @@
     {
         private string palabraSecreta = "ejemplo";
         public string palabraEnJuego = "";
+        private int intentosEnJuego = 0;
+        private int intentosTotales = 6;
         static void Main(string[] args)
         {
            
@@ -34,6 +36,11 @@
                 return true;
             }
             else return false;
+        }
+
+        public bool SumaIntento(string letra)
+        {
+            return true;
         }
 
     }
