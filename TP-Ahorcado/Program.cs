@@ -50,8 +50,13 @@
 
         public bool Inicializar()
         {
-          
-            return true;
+           
+            if (intentosEnJuego == 0 && palabraEnJuego == "")
+            {
+                return true;
+            }
+            else return false;
+
         }
 
     }
