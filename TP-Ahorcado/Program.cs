@@ -48,6 +48,12 @@
             else return false;
         }
 
+        public bool Inicializar()
+        {
+          
+            return true;
+        }
+
     }
 
 }
