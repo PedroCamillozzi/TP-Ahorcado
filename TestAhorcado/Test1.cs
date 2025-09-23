@@ -99,6 +99,33 @@ namespace Ahorcado
             Assert.IsFalse(resultado);
         }
 
+        [TestMethod]
+        public void TestInicializarTrue()
+        {
+            var juego = new TPAhorcado.Program();
+            juego.intentosEnJuego = 0;
+            juego.palabraEnJuego = "";
+
+
+            bool resultado = juego.Inicializar();
+
+
+            Assert.IsTrue(resultado);
+        }
+
+
+        [TestMethod]
+        public void TestInicializarFalse()
+        {
+            var juego = new TPAhorcado.Program();
+            juego.intentosEnJuego = 1;
+            juego.palabraEnJuego = "e";
+
+
+            bool resultado = juego.Inicializar();
+
+            Assert.IsFalse(resultado);
+        }
 
     }
 }

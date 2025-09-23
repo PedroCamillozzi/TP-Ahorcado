@@ -4,7 +4,7 @@
     {
         private string palabraSecreta = "ejemplo";
         public string palabraEnJuego = "";
-        private int intentosEnJuego = 0;
+       public int intentosEnJuego = 0;
         private int intentosTotales = 6;
         static void Main(string[] args)
         {
