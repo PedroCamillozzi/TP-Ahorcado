@@ -4,8 +4,10 @@
     {
         private string palabraSecreta = "ejemplo";
         public string palabraEnJuego = "";
-       public int intentosEnJuego = 0;
-        private int intentosTotales = 6;
+       public int intentosLetraEnJuego = 0;
+        public int intentosPalabraEnJuego = 0;
+        private int cantidadVidasPalabra = 3;
+        private int cantidadVidasLetras = 6;
         static void Main(string[] args)
         {
            
@@ -38,20 +40,10 @@
             else return false;
         }
 
-        public bool SumaIntento(string letra)
-        {
-            if (!palabraEnJuego.Contains(letra))
-            {
-                intentosEnJuego++;
-                return true;
-            }
-            else return false;
-        }
-
         public bool Inicializar()
         {
            
-            if (intentosEnJuego == 0 && palabraEnJuego == "")
+            if (intentosLetraEnJuego == 0 && palabraEnJuego == "")
             {
                 return true;
             }
@@ -59,8 +51,9 @@
 
         }
 
-        public bool GameOver() {
-            return true;
+        public bool GameOver()
+        {
+            return intentosLetraEnJuego == cantidadVidasLetras || intentosPalabraEnJuego == cantidadVidasPalabra;
         }
 
     }

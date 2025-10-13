@@ -5,10 +5,13 @@ namespace Ahorcado
     [TestClass]
     public sealed class Test1
     {
+        
         [TestMethod]
         public void GameOverTrue()
         {
             var juego = new TPAhorcado.Program();
+            juego.intentosLetraEnJuego = 6;
+            juego.intentosPalabraEnJuego = 3;
 
             bool resultado = juego.GameOver();
 
@@ -19,6 +22,8 @@ namespace Ahorcado
         public void GameOverFalse()
         {
             var juego = new TPAhorcado.Program();
+            juego.intentosLetraEnJuego = 2;
+            juego.intentosPalabraEnJuego = 2;
 
             bool resultado = juego.GameOver();
 
@@ -93,24 +98,11 @@ namespace Ahorcado
             Assert.IsFalse(resultado);
         }
 
-
-        [TestMethod]
-        public void TestSumaCantidadIntentosFalse()
-        {
-            var juego = new TPAhorcado.Program();
-            juego.palabraEnJuego = "eje";
-            string letra = "e";
-
-            bool resultado = juego.SumaIntento(letra);
-
-            Assert.IsFalse(resultado);
-        }
-
         [TestMethod]
         public void TestInicializarTrue()
         {
             var juego = new TPAhorcado.Program();
-            juego.intentosEnJuego = 0;
+            juego.intentosLetraEnJuego = 0;
             juego.palabraEnJuego = "";
 
 
@@ -125,7 +117,7 @@ namespace Ahorcado
         public void TestInicializarFalse()
         {
             var juego = new TPAhorcado.Program();
-            juego.intentosEnJuego = 1;
+            juego.intentosLetraEnJuego = 1;
             juego.palabraEnJuego = "e";
 
 
