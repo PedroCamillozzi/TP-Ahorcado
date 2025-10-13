@@ -58,10 +58,15 @@
 
         public bool EsLetraOPalabra(string palabraOLetra)
         {
-            return true;
+            if (palabraOLetra.Length == 1 )
+            {
+                
+                return ! ValidarLetraRepetida(palabraOLetra);
+            }
+            else return TirarPalabraYAcertar(palabraOLetra);
         }
 
 
     }
-
+    
 }

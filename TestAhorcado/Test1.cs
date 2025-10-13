@@ -142,7 +142,7 @@ namespace Ahorcado
         public void TestEsLetraOPalabraFalse()
         {
             var juego = new TPAhorcado.Program();
-            string palabraOLetra = "ejemplo";
+            string palabraOLetra = "pepe";
 
             bool resultado = juego.EsLetraOPalabra(palabraOLetra);
 
