@@ -56,6 +56,7 @@
             return intentosLetraEnJuego == cantidadVidasLetras || intentosPalabraEnJuego == cantidadVidasPalabra;
         }
 
+       
     }
 
 }

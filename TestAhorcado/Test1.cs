@@ -126,5 +126,27 @@ namespace Ahorcado
             Assert.IsFalse(resultado);
         }
 
+        [TestMethod]
+        public void TestEsLetraOPalabraTrue()
+        {
+            var juego = new TPAhorcado.Program();
+            string palabraOLetra = "a";
+
+
+            bool resultado = juego.EsLetraOPalabra(palabraOLetra);
+
+            Assert.IsTrue(resultado);
+        }
+
+        [TestMethod]
+        public void TestEsLetraOPalabraFalse()
+        {
+            var juego = new TPAhorcado.Program();
+            string palabraOLetra = "ejemplo";
+
+            bool resultado = juego.EsLetraOPalabra(palabraOLetra);
+
+            Assert.IsFalse(resultado);
+        }
     }
 }
