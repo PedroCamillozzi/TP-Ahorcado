@@ -14,10 +14,10 @@
         public bool TirarLetraYAcertar(string letra)
         {
            if (palabraSecreta.Contains(letra))
-            {
-                                return true;
-            }
-                 else return false;
+           {
+              return true;
+           }
+           else return false;
         }
 
         public bool TirarPalabraYAcertar(string palabra)

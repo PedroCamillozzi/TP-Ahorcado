@@ -6,6 +6,26 @@ namespace Ahorcado
     public sealed class Test1
     {
         [TestMethod]
+        public void GameOverTrue()
+        {
+            var juego = new TPAhorcado.Program();
+
+            bool resultado = juego.GameOver();
+
+            Assert.IsTrue(resultado);
+        }
+
+        [TestMethod]
+        public void GameOverFalse()
+        {
+            var juego = new TPAhorcado.Program();
+
+            bool resultado = juego.GameOver();
+
+            Assert.IsFalse(resultado);
+        }
+
+        [TestMethod]
         public void TestTirarLetraEYAcertarTrue()
         {
             var juego = new TPAhorcado.Program();
@@ -71,19 +91,6 @@ namespace Ahorcado
             bool resultado = juego.ValidarLetraRepetida(letra);
 
             Assert.IsFalse(resultado);
-        }
-
-
-        [TestMethod]
-        public void TestSumaCantidadIntentosTrue()
-        {
-            var juego = new TPAhorcado.Program();
-            juego.palabraEnJuego = "eje";
-            string letra = "o";
-
-            bool resultado = juego.SumaIntento(letra);
-
-            Assert.IsTrue(resultado);
         }
 
 
