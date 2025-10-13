@@ -59,6 +59,10 @@
 
         }
 
+        public bool GameOver() {
+            return true;
+        }
+
     }
 
 }
