@@ -56,7 +56,12 @@
             return intentosLetraEnJuego == cantidadVidasLetras || intentosPalabraEnJuego == cantidadVidasPalabra;
         }
 
-       
+        public bool EsLetraOPalabra(string palabraOLetra)
+        {
+            return true;
+        }
+
+
     }
 
 }
