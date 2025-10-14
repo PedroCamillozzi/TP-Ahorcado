@@ -15,11 +15,16 @@
 
         public bool TirarLetraYAcertar(string letra)
         {
-           if (palabraSecreta.Contains(letra))
-           {
-              return true;
-           }
-           else return false;
+            if (palabraSecreta.Contains(letra))
+            {
+                return true;
+            }
+            else
+            {
+                intentosLetraEnJuego++;
+                GameOver();
+                return false;
+            }
         }
 
         public bool TirarPalabraYAcertar(string palabra)
@@ -28,22 +33,30 @@
             {
                 return true;
             }
-            else return false;
+            else
+            {
+                intentosPalabraEnJuego++;
+                GameOver();
+                return false;
+            }
         }
 
         public bool ValidarLetraRepetida(string letra)
         {
-           if (palabraEnJuego.Contains(letra))
+            if (palabraEnJuego.Contains(letra))
             {
                 return true;
             }
-            else return false;
+            else {
+                TirarLetraYAcertar(letra);
+                return false; 
+            }
         }
 
         public bool Inicializar()
         {
            
-            if (intentosLetraEnJuego == 0 && palabraEnJuego == "")
+            if (intentosLetraEnJuego == 0 && intentosPalabraEnJuego == 0 && palabraEnJuego == "")
             {
                 return true;
             }
@@ -58,12 +71,15 @@
 
         public bool EsLetraOPalabra(string palabraOLetra)
         {
-            if (palabraOLetra.Length == 1 )
+            if (palabraOLetra.Length == 1)
             {
-                
-                return ! ValidarLetraRepetida(palabraOLetra);
+                ValidarLetraRepetida(palabraOLetra);
+                return true;
             }
-            else return TirarPalabraYAcertar(palabraOLetra);
+            else {
+                TirarPalabraYAcertar(palabraOLetra);
+                return false ;
+            }
         }
 
 
