@@ -9,7 +9,7 @@ namespace Ahorcado
         [TestMethod]
         public void GameOverTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.intentosLetraEnJuego = 6;
             juego.intentosPalabraEnJuego = 3;
 
@@ -21,7 +21,7 @@ namespace Ahorcado
         [TestMethod]
         public void GameOverFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.intentosLetraEnJuego = 2;
             juego.intentosPalabraEnJuego = 2;
 
@@ -33,7 +33,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestTirarLetraEYAcertarTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string letra = "e";
 
             bool resultado = juego.TirarLetraYAcertar(letra);
@@ -44,7 +44,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestTirarLetraEYAcertarFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string letra = "b";
 
             bool resultado = juego.TirarLetraYAcertar(letra);
@@ -55,7 +55,7 @@ namespace Ahorcado
         [TestMethod]
         public void IngresaPalabraYAciertaTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string palabra = "ejemplo";
 
             bool resultado = juego.TirarPalabraYAcertar(palabra);
@@ -66,7 +66,7 @@ namespace Ahorcado
         [TestMethod]
         public void IngresaPalabraYAciertaFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string palabra = "otra";
 
             bool resultado = juego.TirarPalabraYAcertar(palabra);
@@ -77,7 +77,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestValidarLetraRepetidaTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.palabraEnJuego = "eje";
             string letra = "e";
 
@@ -89,7 +89,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestValidarLetraRepetidaFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.palabraEnJuego = "eje";
             string letra = "o";
 
@@ -101,7 +101,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestInicializarTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.intentosLetraEnJuego = 0;
             juego.palabraEnJuego = "";
 
@@ -116,7 +116,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestInicializarFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             juego.intentosLetraEnJuego = 1;
             juego.palabraEnJuego = "e";
 
@@ -129,7 +129,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestEsLetraOPalabraTrue()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string palabraOLetra = "a";
 
 
@@ -141,7 +141,7 @@ namespace Ahorcado
         [TestMethod]
         public void TestEsLetraOPalabraFalse()
         {
-            var juego = new TPAhorcado.Program();
+            var juego = new TPAhorcado.JuegoAhorcado();
             string palabraOLetra = "pepe";
 
             bool resultado = juego.EsLetraOPalabra(palabraOLetra);

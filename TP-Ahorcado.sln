@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP-Ahorcado", "TP-Ahorcado\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAhorcado", "TestAhorcado\TestAhorcado.csproj", "{96647E11-561A-4142-9060-79A8483184C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAhorado", "WebAhorado\WebAhorado.csproj", "{D6013DD7-3BDB-4190-8CA6-A09E5E36C07C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{96647E11-561A-4142-9060-79A8483184C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96647E11-561A-4142-9060-79A8483184C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96647E11-561A-4142-9060-79A8483184C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6013DD7-3BDB-4190-8CA6-A09E5E36C07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6013DD7-3BDB-4190-8CA6-A09E5E36C07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6013DD7-3BDB-4190-8CA6-A09E5E36C07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6013DD7-3BDB-4190-8CA6-A09E5E36C07C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

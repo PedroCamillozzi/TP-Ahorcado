@@ -1,8 +1,8 @@
 ﻿namespace TPAhorcado
 {
-    public class Program
+    public class JuegoAhorcado
     {
-        private string palabraSecreta = "ejemplo";
+        public string palabraSecreta = "ejemplo";
         public string palabraEnJuego = "";
        public int intentosLetraEnJuego = 0;
         public int intentosPalabraEnJuego = 0;
@@ -15,17 +15,38 @@
 
         public bool TirarLetraYAcertar(string letra)
         {
-            if (palabraSecreta.Contains(letra))
+            bool acierto = false;
+            var nuevaPalabra = "";
+
+            // Recorremos cada letra de la palabra secreta
+            for (int i = 0; i < palabraSecreta.Length; i++)
             {
-                return true;
+                // Si la letra coincide, la mostramos
+                if (palabraSecreta[i].ToString().ToLower() == letra.ToLower())
+                {
+                    nuevaPalabra += palabraSecreta[i]; // reemplaza el _
+                    acierto = true;
+                }
+                else
+                {
+                    // Mantiene lo que ya se había adivinado
+                    if (palabraEnJuego.Length > i)
+                        nuevaPalabra += palabraEnJuego[i];
+                    else
+                        nuevaPalabra += "_";
+                }
             }
-            else
-            {
+
+            // Actualizamos la palabra en juego
+            palabraEnJuego = nuevaPalabra;
+
+            // Si no acertó, sumamos un intento
+            if (!acierto)
                 intentosLetraEnJuego++;
-                GameOver();
-                return false;
-            }
+
+            return acierto;
         }
+
 
         public bool TirarPalabraYAcertar(string palabra)
         {
@@ -82,7 +103,30 @@
             }
         }
 
+        public void Reiniciar()
+        {
+            palabraEnJuego = "";
+            intentosLetraEnJuego = 0;
+            intentosPalabraEnJuego = 0;
+        }
 
+        public string MostrarPalabra()
+        {
+            // Si ya adivinó la palabra completa, devolvemos la palabra separada por espacios
+            if (string.Equals(palabraEnJuego, palabraSecreta, StringComparison.OrdinalIgnoreCase))
+            {
+                return string.Join(" ", palabraSecreta.ToCharArray());
+            }
+
+            // Aseguramos comparar sin distinción de mayúsculas
+            var palabraEnJuegoLower = (palabraEnJuego ?? "").ToLowerInvariant();
+            var palabraSecretaLower = (palabraSecreta ?? "").ToLowerInvariant();
+
+            return string.Concat(palabraSecretaLower.Select((c, i) =>
+                palabraEnJuegoLower.Length > i && palabraEnJuegoLower[i] == c
+                    ? $"{palabraSecreta[i]} "   // mostramos el carácter con la capitalización original
+                    : "_ "));
+        }
     }
     
 }
