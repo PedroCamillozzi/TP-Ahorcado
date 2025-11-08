@@ -27,8 +27,8 @@ namespace ReqnrollTPAhorcado.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Juego del Ahorcado en la interfaz", "  To validate the user experience in the browser\r\n  As a player\r\n  I want to play" +
-                " correctly with the fixed word \"ejemplo\"", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Juego del Ahorcado en la interfaz", "  Para validar la experiencia del usuario en el navegador  \r\n  Como jugador  \r\n  " +
+                "Quiero jugar correctamente con la palabra fija \"ejemplo\"", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "Ahorcado.feature"
 #line hidden
@@ -50,7 +50,7 @@ namespace ReqnrollTPAhorcado.Features
         {
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute(Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupBehavior.EndOfClass)]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static async global::System.Threading.Tasks.Task FeatureTearDownAsync()
         {
             await global::Reqnroll.TestRunnerManager.ReleaseFeatureAsync(featureInfo);
@@ -118,10 +118,10 @@ namespace ReqnrollTPAhorcado.Features
         
         public virtual async global::System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 6
+#line 9
   #line hidden
-#line 7
-    await testRunner.GivenAsync("que abro la p�gina del juego", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 10
+    await testRunner.GivenAsync("que abro la pagina del juego", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -130,7 +130,7 @@ namespace ReqnrollTPAhorcado.Features
             return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Ahorcado.feature.ndjson", 6);
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("1) Juego perfecto (todas las letras correctas)")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute(DisplayName="1) Juego perfecto (todas las letras correctas)")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("1) Juego perfecto (todas las letras correctas)")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Juego del Ahorcado en la interfaz")]
         public async global::System.Threading.Tasks.Task _1JuegoPerfectoTodasLasLetrasCorrectas()
@@ -141,7 +141,7 @@ namespace ReqnrollTPAhorcado.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("1) Juego perfecto (todas las letras correctas)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 9
+#line 12
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -151,38 +151,38 @@ namespace ReqnrollTPAhorcado.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 9
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 10
+#line 13
     await testRunner.WhenAsync("ingreso la letra \"e\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 14
     await testRunner.AndAsync("ingreso la letra \"j\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 12
+#line 15
     await testRunner.AndAsync("ingreso la letra \"m\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 13
+#line 16
     await testRunner.AndAsync("ingreso la letra \"p\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 14
+#line 17
     await testRunner.AndAsync("ingreso la letra \"l\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 15
+#line 18
     await testRunner.AndAsync("ingreso la letra \"o\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 16
-    await testRunner.ThenAsync("el juego est� \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 19
+    await testRunner.ThenAsync("el juego esta \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 17
+#line 20
     await testRunner.AndAsync("el mensaje contiene \"�Ganaste!\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("2) Peor juego (todas incorrectas hasta perder)")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute(DisplayName="2) Peor juego (todas incorrectas hasta perder)")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("2) Peor juego (todas incorrectas hasta perder)")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Juego del Ahorcado en la interfaz")]
         public async global::System.Threading.Tasks.Task _2PeorJuegoTodasIncorrectasHastaPerder()
@@ -193,7 +193,7 @@ namespace ReqnrollTPAhorcado.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("2) Peor juego (todas incorrectas hasta perder)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 19
+#line 22
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -203,38 +203,38 @@ namespace ReqnrollTPAhorcado.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 9
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 20
+#line 23
     await testRunner.WhenAsync("ingreso la letra \"a\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 24
     await testRunner.AndAsync("ingreso la letra \"b\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 25
     await testRunner.AndAsync("ingreso la letra \"c\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 26
     await testRunner.AndAsync("ingreso la letra \"d\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 24
+#line 27
     await testRunner.AndAsync("ingreso la letra \"f\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 25
+#line 28
     await testRunner.AndAsync("ingreso la letra \"g\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 26
-    await testRunner.ThenAsync("el juego est� \"perdido\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 29
+    await testRunner.ThenAsync("el juego esta \"perdido\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 27
+#line 30
     await testRunner.AndAsync("veo el banner de Game Over", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("3) Gano con algunos errores")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute(DisplayName="3) Gano con algunos errores")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("3) Gano con algunos errores")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Juego del Ahorcado en la interfaz")]
         public async global::System.Threading.Tasks.Task _3GanoConAlgunosErrores()
@@ -245,7 +245,7 @@ namespace ReqnrollTPAhorcado.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("3) Gano con algunos errores", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 29
+#line 32
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -255,47 +255,47 @@ namespace ReqnrollTPAhorcado.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 9
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 30
+#line 33
     await testRunner.WhenAsync("ingreso la letra \"x\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 34
     await testRunner.AndAsync("ingreso la letra \"z\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 32
+#line 35
     await testRunner.AndAsync("ingreso la letra \"e\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 33
+#line 36
     await testRunner.AndAsync("ingreso la letra \"j\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 37
     await testRunner.AndAsync("ingreso la letra \"m\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 35
+#line 38
     await testRunner.AndAsync("ingreso la letra \"p\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 36
+#line 39
     await testRunner.AndAsync("ingreso la letra \"l\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 37
+#line 40
     await testRunner.AndAsync("ingreso la letra \"o\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 38
-    await testRunner.ThenAsync("el juego est� \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 41
+    await testRunner.ThenAsync("el juego esta \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 39
+#line 42
     await testRunner.AndAsync("el mensaje contiene \"�Ganaste!\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 40
+#line 43
     await testRunner.AndAsync("los intentos de letra muestran \"2 / 6\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute("4) Pierdo por intentos de palabra")]
+        [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute(DisplayName="4) Pierdo por intentos de palabra")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("4) Pierdo por intentos de palabra")]
         [global::Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Juego del Ahorcado en la interfaz")]
         public async global::System.Threading.Tasks.Task _4PierdoPorIntentosDePalabra()
@@ -306,7 +306,7 @@ namespace ReqnrollTPAhorcado.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("4) Pierdo por intentos de palabra", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 42
+#line 45
   this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -316,22 +316,22 @@ namespace ReqnrollTPAhorcado.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 9
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 43
+#line 46
     await testRunner.WhenAsync("ingreso la palabra \"prueba\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 44
+#line 47
     await testRunner.AndAsync("ingreso la palabra \"codigo\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 45
+#line 48
     await testRunner.AndAsync("ingreso la palabra \"python\" y presiono Probar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 46
-    await testRunner.ThenAsync("el juego est� \"perdido\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 49
+    await testRunner.ThenAsync("el juego esta \"perdido\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 47
+#line 50
     await testRunner.AndAsync("veo el banner de Game Over", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }

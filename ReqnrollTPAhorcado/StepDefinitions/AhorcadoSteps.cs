@@ -1,120 +1,100 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.Playwright;
+﻿using System;
+using System.Threading.Tasks;
 using Reqnroll;
-using static PlaywrightHooks;
+using Microsoft.Playwright;
 
-[Binding]
-public class UiSteps
+namespace TP_Ahorcado.Features
 {
-    private IBrowserContext _ctx = null!;
-    private IPage _page = null!;
-
-    // ---------- Hooks ----------
-    [BeforeScenario]
-    public async Task BeforeScenario()
+    [Binding]
+    public class AhorcadoSteps : IAsyncDisposable
     {
-        _ctx = await Browser.NewContextAsync(new BrowserNewContextOptions
-        {
-            ViewportSize = new() { Width = 1280, Height = 900 }
-        });
-        _page = await _ctx.NewPageAsync();
-    }
+        private IPlaywright _playwright;
+        private IBrowser _browser;
+        private IPage _page;
 
-    [AfterScenario]
-    public async Task AfterScenario() => await _ctx.CloseAsync();
-
-    // ---------- Given ----------
-    [Given(@"que abro la página del juego")]
-    public async Task GivenOpenGamePage()
-    {
-        await _page.GotoAsync($"{PlaywrightHooks.BaseUrl}/counter");
-        // Acepta el H1 exacto o aproximado por si cambia levemente el texto
-        var heading = _page.GetByRole(AriaRole.Heading, new() { Name = "Juego del Ahorcado" });
-        if (!await heading.IsVisibleAsync())
+        // ✅ Inicializa Playwright y abre la app
+        [Given("que abro la pagina del juego")]
+        public async Task GivenQueAbroLaPaginaDelJuego()
         {
-            // fallback: cualquier h1 que contenga “Ahorcado”
-            await _page.Locator("h1:has-text('Ahorcado')").WaitForAsync();
+            _playwright = await Playwright.CreateAsync();
+            _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false, // ⚠️ Cambiá a true si no querés que se abra la ventana
+                SlowMo = 250      // Más lento para ver la simulación
+            });
+
+            _page = await _browser.NewPageAsync();
+
+            // Cambiá esta URL por la de tu juego (Angular, React, etc.)
+            await _page.GotoAsync("https://localhost:7065/counter");
         }
-    }
 
-    // ---------- When ----------
-    // Acepta tanto letra como palabra (mismo método)
-    [When(@"ingreso la letra ""([^""]+)"" y presiono Probar")]
-    public async Task WhenEnterLetterAndTry(string letter) => await Play(letter);
-
-    [When(@"ingreso la palabra ""([^""]+)"" y presiono Probar")]
-    public async Task WhenEnterWordAndTry(string word) => await Play(word);
-
-    // ---------- Then ----------
-    [Then(@"el juego está ""(.*)""")]
-    public async Task ThenGameIs(string estado)
-    {
-        var st = estado.Trim().ToLowerInvariant();
-        switch (st)
+        // ✅ Simula ingresar una letra y presionar "Probar"
+        [When("ingreso la letra {string} y presiono Probar")]
+        public async Task WhenIngresoLaLetraYPresionoProbar(string letra)
         {
-            case "ganado":
-                await ExpectMessageContainsIgnorePunctuation("ganaste");
-                break;
-            case "perdido":
-                await _page.Locator("[data-testid=gameover-banner]").WaitForAsync();
-                break;
-            default:
-                throw new ArgumentException($"Estado desconocido: {estado}");
+            await _page.FillAsync("#inputLetra", letra);       // campo de texto de la letra
+            await _page.ClickAsync("#btnProbarLetra");         // botón de probar letra
         }
+
+        // ✅ Simula ingresar una palabra y presionar "Probar"
+        [When("ingreso la palabra {string} y presiono Probar")]
+        public async Task WhenIngresoLaPalabraYPresionoProbar(string palabra)
+        {
+            await _page.FillAsync("#inputLetra", palabra);
+            await _page.ClickAsync("#btnProbarLetra");
+        }
+
+        // ✅ Verifica estado del juego
+        [Then("el juego esta {string}")]
+        public async Task ThenElJuegoEsta(string estado)
+        {
+            var resultText = await _page.InnerTextAsync("#estadoJuego");
+
+            if (estado == "ganado" && !resultText.Contains("Ganaste", StringComparison.OrdinalIgnoreCase))
+                throw new Exception($"Se esperaba 'ganado' pero se mostró: {resultText}");
+
+            if (estado == "perdido" && !resultText.Contains("Perdiste", StringComparison.OrdinalIgnoreCase))
+                throw new Exception($"Se esperaba 'perdido' pero se mostró: {resultText}");
+        }
+
+        // ✅ Verifica el mensaje en pantalla
+        [Then("el mensaje contiene {string}")]
+        public async Task ThenElMensajeContiene(string mensaje)
+        {
+            var alert = await _page.InnerTextAsync("#mensajeJuego");
+            if (!alert.Contains(mensaje, StringComparison.OrdinalIgnoreCase))
+                throw new Exception($"Mensaje esperado '{mensaje}' no encontrado en: {alert}");
+        }
+
+        // ✅ Verifica el banner de "Game Over"
+        [Then("veo el banner de Game Over")]
+        public async Task ThenVeoElBannerDeGameOver()
+        {
+            var visible = await _page.IsVisibleAsync("#gameOverBanner");
+            if (!visible)
+                throw new Exception("No se encontró el banner de Game Over en pantalla.");
+
+        }
+
+        // ✅ Verifica los intentos usados
+        [Then("los intentos de letra muestran {string}")]
+        public async Task ThenLosIntentosDeLetraMuestran(string texto)
+        {
+            var intentoTexto = await _page.InnerTextAsync("#contadorIntentos");
+            if (!intentoTexto.Contains(texto))
+                throw new Exception($"Texto esperado '{texto}' no coincide con '{intentoTexto}'");
+        }
+
+        // ✅ Cierra el navegador al terminar
+        public async ValueTask DisposeAsync()
+        {
+            if (_browser != null)
+                await _browser.CloseAsync();
+            _playwright?.Dispose();
+        }
+
     }
 
-    [Then(@"el mensaje contiene ""([^""]+)""")]
-    public async Task ThenMessageContains(string expected)
-    {
-        await ExpectMessageContainsIgnorePunctuation(expected);
-    }
 
-    [Then(@"los intentos de letra muestran ""([^""]+)""")]
-    public async Task ThenLetterAttemptsShow(string expected)
-    {
-        var raw = await _page.Locator("[data-testid=intentos-letra]").InnerTextAsync();
-        if (!raw.Contains(expected, StringComparison.OrdinalIgnoreCase))
-            throw new Exception($"Se esperaba '{expected}' en '{raw}'.");
-    }
-
-    [Then(@"veo el banner de Game Over")]
-    public async Task ThenSeeGameOverBanner() =>
-        await _page.Locator("[data-testid=gameover-banner]").WaitForAsync();
-
-    // ---------- Helpers ----------
-    private async Task Play(string input)
-    {
-        var entrada = _page.Locator("[data-testid=entrada]");
-        await entrada.FillAsync("");                 // limpiar por si quedó algo
-        await entrada.FillAsync(input);
-        await _page.Locator("[data-testid=probar-btn]").ClickAsync();
-        // breve espera para render de Blazor
-        await _page.WaitForTimeoutAsync(80);
-    }
-
-    // Hace el contains sin depender de signos/emoji: normaliza y busca substring
-    private async Task ExpectMessageContainsIgnorePunctuation(string expectedFragment)
-    {
-        expectedFragment = Normalize(expectedFragment);
-        await _page.WaitForFunctionAsync(
-            """(frag) => {
-                  const el = document.querySelector("[data-testid='mensaje']");
-        if (!el) return false;
-        const txt = el.innerText || "";
-        const norm = txt
-              .normalize("NFD").replace(/\p{ Diacritic}/ gu,"")
-                        .replace(/ [^\p{ L}\p{ N}\s]/ gu,"")
-                        .toLowerCase().trim();
-        return norm.includes(frag);
-    }""",
-            Normalize(expectedFragment)
-        );
-    }
-
-private static string Normalize(string s) =>
-    Regex.Replace(
-        s.Normalize(NormalizationForm.FormD)
-         .ToLowerInvariant().Trim(),
-        @"[^\p{L}\p{N}\s]", ""
-    );
 }
