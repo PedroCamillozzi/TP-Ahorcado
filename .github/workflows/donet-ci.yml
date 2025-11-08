@@ -33,7 +33,8 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Install Playwright browsers
-        run: pwsh ./TP-Ahorcado/ReqnrollTPAhorcado/bin/Debug/net8.0/playwright.ps1 install --with-deps
+         run: |
+        pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
 
       - name: Run tests
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
