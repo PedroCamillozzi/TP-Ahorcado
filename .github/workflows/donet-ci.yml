@@ -33,7 +33,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Install Playwright browsers
-        run: dotnet build && pwsh ./bin/Debug/net8.0/playwright.ps1 install --with-deps
+        run: pwsh ./TP-Ahorcado/ReqnrollTPAhorcado/bin/Debug/net8.0/playwright.ps1 install --with-deps
 
       - name: Run tests
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
