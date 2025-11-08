@@ -26,8 +26,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       
     - name: Install Playwright browsers
-      run: |
-        pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
-
+      run: pwsh ./ReqnrollTPAhorcado/bin/Release/net8.0/playwright.ps1 install --with-deps
+      
     - name: Run tests
       run: dotnet test --configuration Release --no-build --verbosity normal
