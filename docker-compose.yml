@@ -1,0 +1,6 @@
+services:
+  webahorado:
+    image: ${DOCKER_REGISTRY-}webahorado
+    build:
+      context: .
+      dockerfile: WebAhorado/Dockerfile
