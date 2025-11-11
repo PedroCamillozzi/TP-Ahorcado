@@ -49,13 +49,24 @@ namespace TP_Ahorcado.Features
         [Then("el juego esta {string}")]
         public async Task ThenElJuegoEsta(string estado)
         {
-            var resultText = await _page.InnerTextAsync("#estadoJuego");
-
-            if (estado == "ganado" && !resultText.Contains("Ganaste", StringComparison.OrdinalIgnoreCase))
-                throw new Exception($"Se esperaba 'ganado' pero se mostró: {resultText}");
-
-            if (estado == "perdido" && !resultText.Contains("Perdiste", StringComparison.OrdinalIgnoreCase))
-                throw new Exception($"Se esperaba 'perdido' pero se mostró: {resultText}");
+            if (estado == "ganado")
+            {
+                // Busca el texto del mensaje de victoria
+                var resultText = await _page.InnerTextAsync("#mensajeJuego");
+                if (!resultText.Contains("Ganaste", StringComparison.OrdinalIgnoreCase))
+                    throw new Exception($"Se esperaba 'ganado' pero se mostró: {resultText}");
+            }
+            else if (estado == "perdido")
+            {
+                // Cuando se pierde, ya no existe #mensajeJuego → verificamos el banner de Game Over
+                var bannerVisible = await _page.IsVisibleAsync("#gameOverBanner");
+                if (!bannerVisible)
+                    throw new Exception("Se esperaba 'perdido' pero no se encontró el banner de Game Over.");
+            }
+            else
+            {
+                throw new Exception($"Estado desconocido: {estado}");
+            }
         }
 
         // ✅ Verifica el mensaje en pantalla
