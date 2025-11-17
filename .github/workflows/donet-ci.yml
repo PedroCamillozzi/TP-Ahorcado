@@ -32,6 +32,14 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release
 
+      - name: Start web app
+        run: |
+          dotnet run --project TP_Ahorcado/App --urls "http://localhost:5000" &
+        shell: bash
+
+      - name: Wait until app is reachable
+        run: npx wait-on http://localhost:5000
+
       - name: Install Playwright browsers
          run: |
         pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
