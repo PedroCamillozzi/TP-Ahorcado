@@ -39,7 +39,7 @@ jobs:
 
       # 👉 Instala Playwright browsers (indent FIXED)
       - name: Install Playwright browsers
-        run: pwsh -c "playwright install --with-deps"
+        run: npx playwright install
         
       # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
