@@ -2,11 +2,9 @@ name: .NET CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -15,8 +13,8 @@ permissions:
 
 jobs:
   build-and-test:
-    runs-on: windows-latest
-    
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,27 +22,33 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '7.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore TP-Ahorcado.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build TP-Ahorcado.sln --no-restore --configuration Release
 
+      # 👉 Inicia el proyecto web
       - name: Start web app
         run: |
-          dotnet run --project TP_Ahorcado/App --urls "http://localhost:5000" &
+          dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
         shell: bash
 
-      - name: Wait until app is reachable
+      # 👉 Espera a que el servidor esté listo
+      - name: Wait for web app to be ready
         run: npx wait-on http://localhost:5000
 
+      # 👉 Instala Playwright browsers (indent FIXED)
       - name: Install Playwright browsers
-         run: |
-        pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
+        run: |
+          pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
 
+      # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
+        env:
+          BASE_URL: "http://localhost:5000"
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
 
       - name: Publish test results
