@@ -36,7 +36,7 @@ jobs:
 
       # ⭐ Descargar navegadores Playwright
       - name: Install Playwright browsers
-        run: dotnet playwright install --with-deps
+        run: playwright install --with-deps
 
       # 👉 Inicia el proyecto web
       - name: Start web app
