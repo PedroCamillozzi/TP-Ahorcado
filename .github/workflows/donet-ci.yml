@@ -36,17 +36,11 @@ jobs:
           dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
         shell: bash
 
-      - name: Start web app
-        run: |
-          dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
-        shell: bash
-
 
       # 👉 Instala Playwright browsers (indent FIXED)
       - name: Install Playwright browsers
-        run: |
-          pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
-
+        run: pwsh -c "playwright install --with-deps"
+        
       # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
         env:
