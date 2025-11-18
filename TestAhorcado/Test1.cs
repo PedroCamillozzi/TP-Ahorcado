@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
+using System.Reflection;
 
 namespace Ahorcado
 {
@@ -148,5 +149,47 @@ namespace Ahorcado
 
             Assert.IsFalse(resultado);
         }
+
+        [TestMethod]
+        public void Reiniciar_DeberiaPonerContadoresEnCero()
+        {
+            var juego = new TPAhorcado.JuegoAhorcado();
+            juego.intentosLetraEnJuego = 5;
+            juego.intentosPalabraEnJuego = 3;
+            juego.palabraEnJuego = "abc";
+
+            juego.Reiniciar();
+
+            Assert.AreEqual(0, juego.intentosLetraEnJuego);
+            Assert.AreEqual(0, juego.intentosPalabraEnJuego);
+            Assert.AreEqual("", juego.palabraEnJuego);
+        }
+
+        [TestMethod]
+        public void MostrarPalabra_DeberiaMostrarGuionesCuandoNoHayAciertos()
+        {
+            var juego = new TPAhorcado.JuegoAhorcado();
+
+            juego.palabraEnJuego = "";
+
+            string resultado = juego.MostrarPalabra();
+
+            Assert.AreEqual("_ _ _ _ _ _ _ ", resultado);
+        }
+
+        [TestMethod]
+        public void MostrarPalabra_DeberiaMostrarAciertosParciales()
+        {
+            var juego = new TPAhorcado.JuegoAhorcado();
+
+
+            juego.palabraEnJuego = "eje";
+
+            string resultado = juego.MostrarPalabra();
+
+            Assert.AreEqual("e j e _ _ _ _ ", resultado);
+        }
+
+
     }
 }
