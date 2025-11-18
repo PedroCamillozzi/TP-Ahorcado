@@ -36,9 +36,11 @@ jobs:
           dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
         shell: bash
 
-      # 👉 Espera a que el servidor esté listo
-      - name: Wait for web app to be ready
-        run: npx wait-on http://localhost:5000
+      - name: Start web app
+        run: |
+          dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
+        shell: bash
+
 
       # 👉 Instala Playwright browsers (indent FIXED)
       - name: Install Playwright browsers
