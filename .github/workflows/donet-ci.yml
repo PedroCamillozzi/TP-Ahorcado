@@ -38,11 +38,13 @@ jobs:
 
 
       # 👉 Instala Playwright browsers (indent FIXED)
+      - name: Restore .NET tools
+        run: dotnet tool restore
+
       - name: Install Playwright browsers
-        run: |
-         pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
+        run: dotnet playwright install --with-deps
         
-      # 👉 Corre los tests (incluye Reqnroll + Playwright)
+        # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
         env:
           BASE_URL: "http://localhost:5000"
