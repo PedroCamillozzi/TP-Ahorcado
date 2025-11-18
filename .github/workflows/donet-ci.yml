@@ -30,6 +30,14 @@ jobs:
       - name: Build
         run: dotnet build TP-Ahorcado.sln --no-restore --configuration Release
 
+      # ⭐ Instalar Playwright como herramienta
+      - name: Install Playwright .NET tool
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+
+      # ⭐ Descargar navegadores Playwright
+      - name: Install Playwright browsers
+        run: dotnet playwright install --with-deps
+
       # 👉 Inicia el proyecto web
       - name: Start web app
         run: |
