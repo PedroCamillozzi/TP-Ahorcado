@@ -27,7 +27,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore TP-Ahorcado.sln 
+        run: dotnet restore **/*.sln
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
