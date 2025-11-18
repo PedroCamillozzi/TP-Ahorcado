@@ -19,7 +19,7 @@ namespace TP_Ahorcado.Features
             _playwright = await Playwright.CreateAsync();
             _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = false, // ⚠️ Cambiá a true si no querés que se abra la ventana
+                Headless = true, // ⚠️ Cambiá a true si no querés que se abra la ventana
                 SlowMo = 250      // Más lento para ver la simulación
             });
 
