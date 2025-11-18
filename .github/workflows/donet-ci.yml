@@ -45,7 +45,8 @@ jobs:
       - name: Run tests
         env:
           BASE_URL: "http://localhost:5000"
-        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+        run: dotnet test ReqnrollTPAhorcado/ReqnrollTPAhorcado.csproj --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+
 
       - name: Publish test results
         uses: dorny/test-reporter@v1
