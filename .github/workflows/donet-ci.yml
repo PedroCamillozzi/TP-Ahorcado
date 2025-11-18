@@ -30,6 +30,9 @@ jobs:
       - name: Build
         run: dotnet build TP-Ahorcado.sln --no-restore --configuration Release
 
+      - name: Run unit tests
+        run: dotnet test TestAhorcado/TestAhorcado.csproj --configuration Release
+
       # ⭐ Instalar Playwright como herramienta
       - name: Install Playwright .NET tool
         run: dotnet tool install --global Microsoft.Playwright.CLI
