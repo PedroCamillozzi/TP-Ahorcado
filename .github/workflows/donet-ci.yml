@@ -41,7 +41,7 @@ jobs:
       # 👉 Inicia el proyecto web
       - name: Start web app
         run: |
-          dotnet run --project WebAhorado/WebAhorado.csproj --urls "https://localhost:7065" &
+          dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:7065" &
         shell: bash
         
         # 👉 Corre los tests (incluye Reqnroll + Playwright)
