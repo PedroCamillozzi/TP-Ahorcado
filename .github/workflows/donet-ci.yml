@@ -35,14 +35,6 @@ jobs:
         run: |
           dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:5000" &
         shell: bash
-
-
-      # 👉 Instala Playwright browsers (indent FIXED)
-      - name: Restore .NET tools
-        run: dotnet tool restore
-
-      - name: Install Playwright browsers
-        run: dotnet playwright install --with-deps
         
         # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
