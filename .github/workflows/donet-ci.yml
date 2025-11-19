@@ -30,8 +30,13 @@ jobs:
       - name: Build
         run: dotnet build TP-Ahorcado.sln --no-restore --configuration Release
 
-      - name: Run unit tests
-        run: dotnet test TestAhorcado/TestAhorcado.csproj --configuration Release
+      - name: Run unit tests with coverage
+  run: dotnet test TestAhorcado/TestAhorcado.csproj \
+        --configuration Release \
+        --no-build \
+        --collect:"XPlat Code Coverage" \
+        --results-directory ./TestResults
+
 
       # ⭐ Instalar Playwright como herramienta
       - name: Install Playwright .NET tool
