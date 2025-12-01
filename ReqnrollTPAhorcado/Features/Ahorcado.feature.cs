@@ -176,7 +176,7 @@ namespace ReqnrollTPAhorcado.Features
     await testRunner.ThenAsync("el juego esta \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 20
-    await testRunner.AndAsync("el mensaje contiene \"�Ganaste!\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("el mensaje contiene \"Ganaste\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -286,7 +286,7 @@ namespace ReqnrollTPAhorcado.Features
     await testRunner.ThenAsync("el juego esta \"ganado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 42
-    await testRunner.AndAsync("el mensaje contiene \"�Ganaste!\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("el mensaje contiene \"Ganaste\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 43
     await testRunner.AndAsync("los intentos de letra muestran \"2 / 6\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

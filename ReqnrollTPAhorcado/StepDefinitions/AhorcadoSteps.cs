@@ -19,7 +19,7 @@ namespace TP_Ahorcado.Features
             _playwright = await Playwright.CreateAsync();
             _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = true, // ⚠️ Cambiá a true si no querés que se abra la ventana
+                Headless = false, // ⚠️ Cambiá a true si no querés que se abra la ventana
                 SlowMo = 250      // Más lento para ver la simulación
             });
 
@@ -49,13 +49,18 @@ namespace TP_Ahorcado.Features
         [Then("el juego esta {string}")]
         public async Task ThenElJuegoEsta(string estado)
         {
-            var resultText = await _page.InnerTextAsync("#estadoJuego");
-
-            if (estado == "ganado" && !resultText.Contains("Ganaste", StringComparison.OrdinalIgnoreCase))
-                throw new Exception($"Se esperaba 'ganado' pero se mostró: {resultText}");
-
-            if (estado == "perdido" && !resultText.Contains("Perdiste", StringComparison.OrdinalIgnoreCase))
-                throw new Exception($"Se esperaba 'perdido' pero se mostró: {resultText}");
+            if (estado == "ganado")
+            {
+                var mensaje = await _page.InnerTextAsync("#mensajeJuego");
+                if (!mensaje.Contains("Ganaste", StringComparison.OrdinalIgnoreCase))
+                    throw new Exception($"Se esperaba 'ganado' pero se mostró: {mensaje}");
+            }
+            else if (estado == "perdido")
+            {
+                var visible = await _page.IsVisibleAsync("#gameOverBanner");
+                if (!visible)
+                    throw new Exception("Se esperaba 'perdido', pero no apareció el banner Game Over.");
+            }
         }
 
         // ✅ Verifica el mensaje en pantalla
