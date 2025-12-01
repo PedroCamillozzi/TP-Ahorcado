@@ -17,7 +17,7 @@ Feature: Juego del Ahorcado en la interfaz
     And ingreso la letra "l" y presiono Probar
     And ingreso la letra "o" y presiono Probar
     Then el juego esta "ganado"
-    And el mensaje contiene "Ganaste"
+    And el mensaje contiene "¡Ganaste"
 
   Scenario: 2) Peor juego (todas incorrectas hasta perder)
     When ingreso la letra "a" y presiono Probar
@@ -39,7 +39,7 @@ Feature: Juego del Ahorcado en la interfaz
     And ingreso la letra "l" y presiono Probar
     And ingreso la letra "o" y presiono Probar
     Then el juego esta "ganado"
-    And el mensaje contiene "Ganaste"
+    And el mensaje contiene "¡Ganaste"
     And los intentos de letra muestran "2 / 6"
 
   Scenario: 4) Pierdo por intentos de palabra
