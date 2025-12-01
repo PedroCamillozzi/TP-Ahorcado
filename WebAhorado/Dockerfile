@@ -15,8 +15,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copiar los proyectos
-COPY ["WebAhorado/WebAhorado.csproj", "WebAhorado/"]
-COPY ["TP-Ahorcado/TP-Ahorcado.csproj", "TP-Ahorcado/"]
+COPY ["..WebAhorado/WebAhorado.csproj", "WebAhorado/"]
+COPY ["..TP-Ahorcado/TP-Ahorcado.csproj", "TP-Ahorcado/"]
 
 # Restaurar dependencias
 RUN dotnet restore "./WebAhorado/WebAhorado.csproj"
