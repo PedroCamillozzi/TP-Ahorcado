@@ -2,11 +2,9 @@ name: .NET CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -27,17 +25,36 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore TP-Ahorcado.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build TP-Ahorcado.sln --no-restore --configuration Release
 
+      - name: Run unit tests
+        run: dotnet test TestAhorcado/TestAhorcado.csproj --configuration Release --no-build
+
+
+
+      # ⭐ Instalar Playwright como herramienta
+      - name: Install Playwright .NET tool
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+
+      # ⭐ Descargar navegadores Playwright
       - name: Install Playwright browsers
-         run: |
-        pwsh -Command "& { Get-ChildItem -Recurse -Filter playwright.ps1 | Select-Object -First 1 | ForEach-Object { & $_.FullName install --with-deps } }"
+        run: playwright install --with-deps
 
+      # 👉 Inicia el proyecto web
+      - name: Start web app
+        run: |
+          dotnet run --project WebAhorado/WebAhorado.csproj --urls "http://localhost:7065" &
+        shell: bash
+        
+        # 👉 Corre los tests (incluye Reqnroll + Playwright)
       - name: Run tests
-        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+        env:
+          BASE_URL: "http://localhost:5000"
+        run: dotnet test ReqnrollTPAhorcado/ReqnrollTPAhorcado.csproj --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+
 
       - name: Publish test results
         uses: dorny/test-reporter@v1
