@@ -26,7 +26,7 @@ namespace TP_Ahorcado.Features
             _page = await _browser.NewPageAsync();
 
             // Cambiá esta URL por la de tu juego (Angular, React, etc.)
-            await _page.GotoAsync("https://localhost:7065/counter");
+            await _page.GotoAsync("http://localhost:7065/counter");
         }
 
         // ✅ Simula ingresar una letra y presionar "Probar"
